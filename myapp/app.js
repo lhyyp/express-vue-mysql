@@ -11,9 +11,9 @@ const cookieSession=require('cookie-session')
 var app = express();
 app.use(multerObj.any());
 // view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'html');
-// app.engine('.html',ejs.__express);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
+app.engine('.html',ejs.__express);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -35,22 +35,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser('sess_id'));
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use("/admin",require('./routes/index'));          //访问前端的路由，全部指向pulic/index    (前端打包好的)
-app.use(require('connect-history-api-fallback')({
-    verbose: true,
-    index: '/index.html',
-    htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'],
-    rewrites: [
-        { from: /^\/admin/, to: () => {
-        	console.log(1);
-        	return path.join(__dirname, 'public/index.html');
-        } },
-        { from: /^\/login/, to: () => {console.log(2)} },
-    ],
-    path: /^\/admin/,
-}));
-
 // app.use("/login",express.static(path.join(__dirname, 'public/index.html')));
-app.use("/register",require('./routes/index'));
+// app.use("/register",require('./routes/index'));
 
 app.use('/api/admin', require('./routes/admin/admin'));
 app.use('/api', require('./routes/web/index'));
