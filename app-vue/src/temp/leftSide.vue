@@ -37,7 +37,7 @@
                           },
                            {
                             name:'权限列表',
-                            path:'/admin/rule'
+                            path:'/admin/aaaa/rule'
                           }
                        ]
                    },

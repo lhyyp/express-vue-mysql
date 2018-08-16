@@ -13,6 +13,7 @@ Vue.use(Router)
 
 const router=new Router({
   mode: 'history',
+  history: true,
   routes: [
     {path: '/',name: 'HelloWorld',component: HelloWorld},
     {path: '/modifyMember',name: 'modifyMember',component: modifyMember},
@@ -21,7 +22,7 @@ const router=new Router({
     {path: '/admin',name:'admin',component:admin, meta: { requireAuth: true},children:[
        {path:'/',name:'Jurisdiction',meta: { requireAuth: true},component:Jurisdiction},
        {path:'/admin/group',name:'group',meta: { requireAuth: true},component:group},
-       {path:'/admin/rule',name:'rule',meta: { requireAuth: true},component:rule}
+       {path:'/admin/aaaa/rule',name:'rule',meta: { requireAuth: true},component:rule}
       ]
     },
     {path: '/admin/user',name:'user',component:admin, meta: { requireAuth: true},children:[
